@@ -17,6 +17,14 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
   const pathname = usePathname()
 
   useEffect(() => {
+    if (hover) {
+      document.getElementsByTagName('body')[0].style.cursor = 'pointer'
+    } else {
+      document.getElementsByTagName('body')[0].style.cursor = 'auto'
+    }
+  }, [hover, isActive])
+
+  useEffect(() => {
     if (pathname === item.slug) {
       setActivePlane(index)
       setIsActive(true)

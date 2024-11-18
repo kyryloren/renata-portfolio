@@ -66,9 +66,11 @@ const Cursor = () => {
 
           if (isWithinViewport) {
             document.getElementById('cursor').style.opacity = 0.25
+            document.getElementsByTagName('body')[0].style.cursor = 'pointer'
             // Optionally add any action when the mouse is within the viewport
           } else {
             document.getElementById('cursor').style.opacity = 0
+            document.getElementsByTagName('body')[0].style.cursor = 'auto'
             // Optionally add any action when the mouse is outside the viewport
           }
         }
