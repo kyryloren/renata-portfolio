@@ -20,7 +20,7 @@ const planeSettings = {
 Gsap Defaults
 ------------------------------*/
 gsap.defaults({
-  duration: 2.5,
+  duration: 1,
   ease: 'power3.out',
 })
 

@@ -30,7 +30,7 @@ export default function Gallery() {
 
   return (
     <>
-      <View className='w-screen h-screen'>
+      <View>
         <Suspense fallback={null}>
           <Carousel />
           {/* <Common /> */}

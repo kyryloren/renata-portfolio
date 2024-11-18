@@ -51,21 +51,31 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
 
   const handleClose = (e) => {
     e.stopPropagation()
-    if (!isActive) return
-    setActivePlane(null)
-    setHover(false)
-    router.push('/')
-    clearTimeout(timeoutID.current)
-    timeoutID.current = setTimeout(() => {
-      setCloseActive(false)
-    }, 1500) // The duration of this timer depends on the duration of the plane's closing animation.
+
+    gsap.to(gsap.utils.toArray('.anim-title-1'), {
+      duration: 0.75,
+      stagger: 0.03,
+      yPercent: 100,
+      ease: 'power3.inOut',
+    })
+
+    setTimeout(() => {
+      if (!isActive) return
+      setActivePlane(null)
+      setHover(false)
+      router.push('/')
+      clearTimeout(timeoutID.current)
+      timeoutID.current = setTimeout(() => {
+        setCloseActive(false)
+      }, 1000)
+    }, 500)
   }
 
   return (
     <group
       ref={$root}
       onClick={() => {
-        router.push(item.slug)
+        router.push(item.slug, { scroll: false })
         // setActivePlane(index)
       }}
       onPointerEnter={() => setHover(true)}

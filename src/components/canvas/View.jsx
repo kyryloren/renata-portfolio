@@ -20,7 +20,7 @@ const View = forwardRef(({ children, orbit, ...props }, ref) => {
 
   return (
     <>
-      <div ref={localRef} {...props} />
+      <div ref={localRef} {...props} style={{ width: '100vw', height: '100vh' }} />
       <Three>
         <ViewImpl track={localRef}>
           {children}

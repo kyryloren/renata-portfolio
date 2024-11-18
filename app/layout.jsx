@@ -1,6 +1,9 @@
 import { Layout } from '@/components/dom/Layout'
 import Gallery from '@/components/gallery'
-import '@/global.css'
+import StyledComponentsRegistry from '@/lib/registry'
+import CustomTheme from '@/lib/theme'
+import Nav from '@/components/nav'
+import manrope from '@/styles/fonts'
 
 export const metadata = {
   title: 'Next.js + Three.js',
@@ -15,12 +18,17 @@ export default function RootLayout({ children }) {
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
-      <body>
+      <body className={`bg-black text-white ${manrope.className}`}>
         {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
-        <Layout>
-          <Gallery />
-          {children}
-        </Layout>
+        <StyledComponentsRegistry>
+          <Layout>
+            <CustomTheme>
+              <Nav />
+              <Gallery />
+              {children}
+            </CustomTheme>
+          </Layout>
+        </StyledComponentsRegistry>
       </body>
     </html>
   )
