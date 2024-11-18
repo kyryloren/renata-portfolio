@@ -3,8 +3,6 @@
 import { Container, NormalText, normalTheme } from '@/styles'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { usePathname } from 'next/navigation'
-import { useEffect } from 'react'
 import styled from 'styled-components'
 
 const BottomWrapper = styled.div`
@@ -25,7 +23,6 @@ const InnerContent = styled.div`
 
 const Bottom = ({ pathname }) => {
   useGSAP(() => {
-    console.log(pathname)
     if (pathname === '/') {
       gsap.to('.anim-bottom', {
         opacity: 1,

@@ -4,6 +4,7 @@ import StyledComponentsRegistry from '@/lib/registry'
 import CustomTheme from '@/lib/theme'
 import Nav from '@/components/nav'
 import manrope from '@/styles/fonts'
+import Cursor from '@/components/cursor'
 
 export const metadata = {
   title: 'Next.js + Three.js',
@@ -25,6 +26,7 @@ export default function RootLayout({ children }) {
             <CustomTheme>
               <Nav />
               <Gallery />
+              <Cursor />
               {children}
             </CustomTheme>
           </Layout>
