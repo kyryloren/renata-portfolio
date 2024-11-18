@@ -6,6 +6,9 @@ import PostProcessing from './post'
 import CarouselItem from './item'
 import { lerp, getPiramidalIndex } from './utils'
 import images from './images'
+import { Html } from '@react-three/drei'
+import Bottom from './bottom'
+import { usePathname } from 'next/navigation'
 
 /*------------------------------
 Plane Settings
@@ -34,6 +37,7 @@ const Carousel = () => {
   const [activePlane, setActivePlane] = useState(null)
   const prevActivePlane = usePrevious(activePlane)
   const { viewport } = useThree()
+  const pathname = usePathname()
 
   /*--------------------
   Vars
@@ -165,10 +169,29 @@ const Carousel = () => {
     )
   }
 
+  const renderBottom = () => {
+    return (
+      <group position={[-viewport.width / 2, -viewport.height / 2, 0]}>
+        <mesh />
+        <Html
+          position={[0, 0, 0]}
+          style={{
+            position: 'fixed',
+            bottom: 0,
+            left: 0,
+          }}
+        >
+          <Bottom pathname={pathname} />
+        </Html>
+      </group>
+    )
+  }
+
   return (
     <group>
       {renderPlaneEvents()}
       {renderSlider()}
+      {renderBottom()}
       <PostProcessing ref={$post} />
     </group>
   )
