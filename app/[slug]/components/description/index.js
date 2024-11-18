@@ -19,7 +19,6 @@ const Description = ({ data }) => {
       scrollTrigger: {
         start: `${height}px bottom-=20%`,
         toggleActions: 'play none none reset',
-        markers: true,
       },
     })
 
