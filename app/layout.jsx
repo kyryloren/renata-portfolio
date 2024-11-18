@@ -7,8 +7,11 @@ import manrope from '@/styles/fonts'
 import Cursor from '@/components/cursor'
 
 export const metadata = {
-  title: 'Next.js + Three.js',
-  description: 'A minimal starter for Nextjs + React-three-fiber and Threejs.',
+  title: {
+    template: '%s | Renata Dominguez',
+    default: 'Renata Dominguez',
+  },
+  description: '',
 }
 
 export default function RootLayout({ children }) {

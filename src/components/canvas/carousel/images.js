@@ -21,7 +21,7 @@ const images = [
   },
   {
     image: 'https://raw.githubusercontent.com/supahfunk/webgl-carousel/main/public/img/6.jpg',
-    slug: '/six',
+    slug: '/subway',
   },
 ]
 

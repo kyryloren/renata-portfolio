@@ -5,9 +5,7 @@ import { Col, HeroContent, HeroSection, InfoWrapper } from './styles'
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
 
-const Hero = () => {
-  const TITLE = 'Subway'
-
+const Hero = ({ data }) => {
   useGSAP(() => {
     gsap.from(gsap.utils.toArray('.anim-title-1'), {
       duration: 0.75,
@@ -30,29 +28,23 @@ const Hero = () => {
       <Container>
         <HeroContent>
           <DisplayText>
-            {TITLE.split('').map((letter, index) => (
+            {data?.title?.split('').map((letter, index) => (
               <span key={index} className='overflow'>
                 <span className='anim-title-1'>{letter}</span>
               </span>
             ))}
           </DisplayText>
           <InfoWrapper>
-            <Col>
-              <span className='overflow'>
-                <NormalText className='dim anim-text-1'>Agency</NormalText>
-              </span>
-              <span className='overflow'>
-                <NormalText className='anim-text-1'>dentsu</NormalText>
-              </span>
-            </Col>
-            <Col>
-              <span className='overflow'>
-                <NormalText className='dim anim-text-1'>Client</NormalText>
-              </span>
-              <span className='overflow'>
-                <NormalText className='anim-text-1'>Subway</NormalText>
-              </span>
-            </Col>
+            {data?.list?.slice(0, 2).map((item, index) => (
+              <Col key={index}>
+                <span className='overflow'>
+                  <NormalText className='dim anim-text-1'>{item?.label}</NormalText>
+                </span>
+                <span className='overflow'>
+                  <NormalText className='anim-text-1'>{item?.text}</NormalText>
+                </span>
+              </Col>
+            ))}
           </InfoWrapper>
         </HeroContent>
       </Container>

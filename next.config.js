@@ -13,9 +13,18 @@ const withPWA = require('@ducanh2912/next-pwa').default({
 
 const nextConfig = {
   // uncomment the following snippet if using styled components
-  // compiler: {
-  //   styledComponents: true,
-  // },
+  compiler: {
+    styledComponents: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: process.env.NEXT_PUBLIC_PROTOCOL,
+        hostname: process.env.NEXT_PUBLIC_STRAPI_HOSTNAME,
+        port: '',
+      },
+    ],
+  },
   reactStrictMode: true, // Recommended for the `pages` directory, default in `app`.
   images: {},
   webpack(config, { isServer }) {
