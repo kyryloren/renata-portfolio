@@ -58,6 +58,12 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
       yPercent: 100,
       ease: 'power3.inOut',
     })
+    gsap.to(gsap.utils.toArray('.anim-text-1'), {
+      duration: 0.75,
+      stagger: 0.03,
+      yPercent: 100,
+      ease: 'power3.inOut',
+    })
 
     setTimeout(() => {
       if (!isActive) return

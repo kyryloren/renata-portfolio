@@ -67,10 +67,11 @@ export const Display = css`
   // 64 > 164
   font-size: ${pxCutOff(164)};
   font-weight: 500;
-  line-height: 1;
+  line-height: 1.1;
 
   ${media.desktopL`font-size: clamp(64px, 28.7887px + 9.3897vw, 164px);`}
 `
 export const DisplayText = styled.h1`
   ${Display}
+  margin: 0;
 `

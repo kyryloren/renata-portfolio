@@ -21,4 +21,18 @@ export const HeroContent = styled.div`
   height: 100%;
   flex-direction: column;
   justify-content: center;
+  gap: var(--space-s);
+`
+export const InfoWrapper = styled.div`
+  display: flex;
+  gap: var(--space-3xl);
+`
+export const Col = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3xs);
+
+  .dim {
+    opacity: 0.75;
+  }
 `
