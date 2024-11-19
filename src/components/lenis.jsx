@@ -24,11 +24,11 @@ function LenisWrapper({ children }) {
   }, [])
 
   return pathname === '/' ? (
+    children
+  ) : (
     <ReactLenis root ref={lenisRef} autoRaf={false}>
       {children}
     </ReactLenis>
-  ) : (
-    children
   )
 }
 
