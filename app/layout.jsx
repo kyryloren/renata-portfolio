@@ -12,7 +12,7 @@ const description = ``
 
 export const metadata = {
   title: {
-    template: '%s | ',
+    template: '%s | Renata Dominguez',
     default: title,
   },
   description: description,
