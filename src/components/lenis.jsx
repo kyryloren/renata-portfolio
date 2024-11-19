@@ -11,8 +11,6 @@ function LenisWrapper({ children }) {
   const lenisRef = useRef()
   const pathname = usePathname()
 
-  if (pathname === '/') return children
-
   useEffect(() => {
     function update(time) {
       lenisRef.current?.lenis?.raf(time * 1000)
@@ -23,12 +21,14 @@ function LenisWrapper({ children }) {
     return () => {
       gsap.ticker.remove(update)
     }
-  })
+  }, [])
 
-  return (
+  return pathname === '/' ? (
     <ReactLenis root ref={lenisRef} autoRaf={false}>
       {children}
     </ReactLenis>
+  ) : (
+    children
   )
 }
 

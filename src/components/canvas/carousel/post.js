@@ -24,5 +24,6 @@ const PostProcessing = forwardRef((_, ref) => {
     </mesh>
   )
 })
+PostProcessing.displayName = 'Post'
 
 export default PostProcessing
