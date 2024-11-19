@@ -7,7 +7,6 @@ import gsap from 'gsap'
 import PostProcessing from './post'
 import CarouselItem from './item'
 import { lerp, getPiramidalIndex } from './utils'
-import images from './images'
 import { Html } from '@react-three/drei'
 import Bottom from './bottom'
 import { usePathname } from 'next/navigation'
@@ -32,7 +31,7 @@ gsap.defaults({
 /*------------------------------
 Carousel
 ------------------------------*/
-const Carousel = () => {
+const Carousel = ({ data }) => {
   const [$root, setRoot] = useState()
   const $post = useRef()
 
@@ -156,7 +155,7 @@ const Carousel = () => {
   const renderSlider = () => {
     return (
       <group ref={setRoot}>
-        {images.map((item, i) => (
+        {data.map((item, i) => (
           <CarouselItem
             width={planeSettings.width}
             height={planeSettings.height}

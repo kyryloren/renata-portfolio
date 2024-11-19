@@ -25,7 +25,7 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
   }, [hover, isActive])
 
   useEffect(() => {
-    if (pathname === item.slug) {
+    if (pathname === `/${item.slug}`) {
       setActivePlane(index)
       setIsActive(true)
       setCloseActive(true)
@@ -89,13 +89,13 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
     <group
       ref={$root}
       onClick={() => {
-        router.push(item.slug, { scroll: false })
+        router.push(`/${item.slug}`, { scroll: false })
         // setActivePlane(index)
       }}
       onPointerEnter={() => setHover(true)}
       onPointerLeave={() => setHover(false)}
     >
-      <Plane width={width} height={height} texture={item.image} active={isActive} />
+      <Plane width={width} height={height} texture={item.image.url} active={isActive} />
 
       {isCloseActive ? (
         <mesh position={[0, 0, 0.01]} onClick={handleClose}>

@@ -28,5 +28,5 @@ export const DescriptionWrapper = styled.div`
   width: 50%;
   display: flex;
   flex-direction: column;
-  gap: var(--space-2xs);
+  gap: var(--space-m);
 `

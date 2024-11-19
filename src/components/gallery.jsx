@@ -23,16 +23,16 @@ const View = dynamic(() => import('@/components/canvas/View').then((mod) => mod.
 const Carousel = dynamic(() => import('@/components/canvas/carousel'), { ssr: false })
 // const Common = dynamic(() => import('@/components/canvas/View').then((mod) => mod.Common), { ssr: false })
 
-export default function Gallery() {
+export default function Gallery({ data }) {
   const pathname = usePathname()
 
-  if (pathname === '/contact') return null
+  if (pathname === '/contact' || pathname === '/about') return null
 
   return (
     <>
       <View>
         <Suspense fallback={null}>
-          <Carousel />
+          <Carousel data={data} />
           {/* <Common /> */}
         </Suspense>
       </View>

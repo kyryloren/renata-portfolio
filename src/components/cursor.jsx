@@ -40,7 +40,7 @@ const Cursor = () => {
   const pathname = usePathname()
 
   useEffect(() => {
-    if (pathname !== '/') {
+    if (pathname !== '/' && pathname !== '/about') {
       // Set the initial transform to keep the cursor centered
       gsap.set('.flair', { xPercent: -50, yPercent: -50 })
 

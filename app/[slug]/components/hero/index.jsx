@@ -30,7 +30,7 @@ const Hero = ({ data }) => {
           <DisplayText>
             {data?.title?.split('').map((letter, index) => (
               <span key={index} className='overflow'>
-                <span className='anim-title-1'>{letter}</span>
+                <span className='anim-title-1'>{letter === ' ' ? '\u00A0' : letter}</span>
               </span>
             ))}
           </DisplayText>

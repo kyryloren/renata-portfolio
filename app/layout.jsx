@@ -5,6 +5,7 @@ import CustomTheme from '@/lib/theme'
 import Nav from '@/components/nav'
 import manrope from '@/styles/fonts'
 import Cursor from '@/components/cursor'
+import { fetchAPI } from '@/lib/api'
 
 export const metadata = {
   title: {
@@ -14,7 +15,16 @@ export const metadata = {
   description: '',
 }
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const projectsData = await fetchAPI('/projects', {
+    populate: {
+      fields: ['slug', 'title'],
+      image: {
+        populate: '*',
+      },
+    },
+  })
+
   return (
     <html lang='en' className='antialiased'>
       {/*
@@ -28,7 +38,7 @@ export default function RootLayout({ children }) {
           <Layout>
             <CustomTheme>
               <Nav />
-              <Gallery />
+              <Gallery data={projectsData?.data} />
               <Cursor />
               {children}
             </CustomTheme>

@@ -1,6 +1,6 @@
 'use client'
 
-import { Z_INDEX } from '@/styles'
+import { Normal, Z_INDEX } from '@/styles'
 import Link from 'next/link'
 import styled from 'styled-components'
 
@@ -34,6 +34,7 @@ export const LinksWrapper = styled.div`
 export const CustomLink = styled(Link)`
   color: ${({ theme }) => `rgb(${theme.white})`};
   text-decoration: none;
+  ${Normal}
 
   &:hover {
     opacity: 0.75;

@@ -1,7 +1,6 @@
 import LenisWrapper from '@/components/lenis'
-import { Description, FullMedia, Hero } from './components'
+import { Description, Hero, MediaContent } from './components'
 import { fetchAPI } from '@/lib/api'
-import { ArticleSection } from './components/full/shared'
 
 export async function generateMetadata({ params: { slug } }) {
   const projectsData = await fetchAPI('/projects', {
@@ -57,13 +56,7 @@ export default async function Page({ params: { slug } }) {
     <LenisWrapper>
       <Hero data={projectsDoc} />
       <Description data={projectsDoc} />
-      <ArticleSection>
-        {projectsDoc.article.map((article) => {
-          if (article?.__component === 'project.full-media') {
-            return <FullMedia data={article} />
-          }
-        })}
-      </ArticleSection>
+      <MediaContent data={projectsDoc?.article} />
     </LenisWrapper>
   )
 }

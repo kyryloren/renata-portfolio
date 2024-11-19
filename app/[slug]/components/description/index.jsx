@@ -58,15 +58,18 @@ const Description = ({ data }) => {
         ))}
       </QuickContentWrapper>
       <DescriptionWrapper>
-        {data?.description?.split('\n').map((paragraph, index) => (
-          <div key={index}>
-            {paragraph.split(' ').map((word, index) => (
-              <span className='overflow' key={index}>
-                <NormalText className='text-anim-2'>{word}&nbsp;</NormalText>
-              </span>
-            ))}
-          </div>
-        ))}
+        {data?.description?.split('\n').map(
+          (paragraph, index) =>
+            paragraph.trim() && (
+              <div key={index}>
+                {paragraph.split(' ').map((word, index) => (
+                  <span className='overflow' key={index}>
+                    <NormalText className='text-anim-2'>{word}&nbsp;</NormalText>
+                  </span>
+                ))}
+              </div>
+            ),
+        )}
       </DescriptionWrapper>
     </DescriptionSection>
   )
