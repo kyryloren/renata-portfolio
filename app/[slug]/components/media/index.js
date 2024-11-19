@@ -29,6 +29,19 @@ const MediaContent = ({ data }) => {
               )
             }
 
+            if (item.__component === 'project.half-text-right') {
+              return (
+                <HalfHalf key={index}>
+                  <ImageWrapper>
+                    <Image src={item?.left_media?.url} alt={item?.left_media?.alternativeText} fill />
+                  </ImageWrapper>
+                  <HalfTextWrapper>
+                    <NormalText>{item?.text}</NormalText>
+                  </HalfTextWrapper>
+                </HalfHalf>
+              )
+            }
+
             if (item.__component === 'project.half-media') {
               return (
                 <HalfHalf key={index}>

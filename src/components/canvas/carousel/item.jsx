@@ -30,7 +30,13 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
       setIsActive(true)
       setCloseActive(true)
     } else {
+      if (!isActive) return
       setIsActive(null)
+      setActivePlane(null)
+      clearTimeout(timeoutID.current)
+      timeoutID.current = setTimeout(() => {
+        setCloseActive(false)
+      }, 1000)
     }
   }, [isActive, pathname])
 
@@ -75,13 +81,8 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
 
     setTimeout(() => {
       if (!isActive) return
-      setActivePlane(null)
       setHover(false)
       router.push('/')
-      clearTimeout(timeoutID.current)
-      timeoutID.current = setTimeout(() => {
-        setCloseActive(false)
-      }, 1000)
     }, 500)
   }
 
