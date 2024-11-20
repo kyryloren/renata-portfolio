@@ -6,12 +6,25 @@ import { CustomLink, HeaderWrapper, InnerNav, LinksWrapper, LogoWrapper } from '
 import { useRouter, usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { useLenis } from 'lenis/react'
+import { useEffect } from 'react'
 
 const Nav = () => {
   const router = useRouter()
   const pathname = usePathname()
 
   const lenis = useLenis()
+
+  useEffect(() => {
+    gsap.to(document.getElementsByTagName('body')[0], { opacity: 1, duration: 0.5 })
+  }, [pathname])
+
+  const navigateTo = (path) => {
+    gsap.to(document.getElementsByTagName('body')[0], {
+      opacity: 0,
+      duration: 0.5,
+      onComplete: () => router.push(path),
+    })
+  }
 
   return (
     <HeaderWrapper>
@@ -43,16 +56,30 @@ const Nav = () => {
                 setTimeout(() => {
                   router.push('/')
                 }, 650)
-              } else {
-                router.push('/')
-              }
+              } else navigateTo('/')
             }}
           >
             <Logo />
           </LogoWrapper>
           <LinksWrapper>
-            <CustomLink href={'/about'}>About</CustomLink>
-            <CustomLink href={'/archive'}>Archive</CustomLink>
+            <CustomLink
+              href={'/about'}
+              onClick={(e) => {
+                e.preventDefault()
+                navigateTo('/about')
+              }}
+            >
+              About
+            </CustomLink>
+            <CustomLink
+              href={'/archive'}
+              onClick={(e) => {
+                e.preventDefault()
+                navigateTo('/archive')
+              }}
+            >
+              Archive
+            </CustomLink>
             <CustomLink href={'/contact'}>Contact</CustomLink>
           </LinksWrapper>
         </InnerNav>

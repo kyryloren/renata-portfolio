@@ -30,7 +30,7 @@ export default function Gallery({ data }) {
 
   return (
     <>
-      <View>
+      <View id='carousel'>
         <Suspense fallback={null}>
           <Carousel data={data} />
           {/* <Common /> */}

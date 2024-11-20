@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
 
   return (
     <div
+      id='canvas'
       ref={ref}
       style={{
         position: 'relative',
