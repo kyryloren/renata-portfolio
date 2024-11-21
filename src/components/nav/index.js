@@ -84,7 +84,7 @@ const Nav = ({ data }) => {
               >
                 Archive
               </CustomLink>
-              <CustomHref href={'mailto:renatadg8@gmail.com'}>Let's Work</CustomHref>
+              <CustomHref href="mailto:renatadg8@gmail.com">Let's Work</CustomHref>
             </LinksWrapper>
           </InnerNav>
         </Container>

@@ -29,6 +29,8 @@ const About = ({ data, open, setOpen }) => {
   const container = useRef(null)
   const invisRef = useRef(null)
 
+  // useEffect(() => {}, [])
+
   useGSAP(() => {
     if (open) {
       if (lenis) {
