@@ -39,7 +39,7 @@ const Nav = ({ data }) => {
               onClick={(e) => {
                 e.preventDefault()
 
-                if (pathname !== '/' && pathname !== '/about') {
+                if (pathname !== '/' && pathname !== '/archive') {
                   lenis.scrollTo(0)
 
                   setTimeout(() => {

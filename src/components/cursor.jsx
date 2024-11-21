@@ -42,7 +42,11 @@ const Cursor = () => {
   const isTouchDevice = useIsTouchDevice()
 
   useEffect(() => {
-    if (pathname !== '/' && pathname !== '/about') {
+    const excludedPaths = ['/contact', '/about', '/archive', '/']
+
+    if (excludedPaths.includes(pathname)) {
+      document.getElementById('cursor').style.opacity = 0
+    } else {
       // Set the initial transform to keep the cursor centered
       gsap.set('.flair', { xPercent: -50, yPercent: -50 })
 
@@ -84,8 +88,6 @@ const Cursor = () => {
       return () => {
         window.removeEventListener('mousemove', handleMouseMove)
       }
-    } else {
-      document.getElementById('cursor').style.opacity = 0
     }
   }, [pathname])
 
