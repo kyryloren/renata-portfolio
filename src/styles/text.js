@@ -42,8 +42,9 @@ export const MediumLargeText = styled.h3`
 export const Large = css`
   // 56 > 64
   font-size: ${pxCutOff(64)};
-  font-weight: 500;
+  font-weight: 400;
   line-height: 1;
+  letter-spacing: -0.2vw;
 
   ${media.desktopL`font-size: clamp(3.5rem, 3.3239rem + 0.7512vw, 4rem);`}
 `

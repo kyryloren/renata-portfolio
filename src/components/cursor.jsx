@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import gsap from 'gsap'
 import FlairComponent from './flair'
 import { usePathname } from 'next/navigation'
+import { useIsTouchDevice } from '@/hooks'
 
 const CustomCursor = styled.div`
   width: 200px;
@@ -38,6 +39,7 @@ const DetectionArea = styled.div`
 const Cursor = () => {
   const detectionAreaRef = useRef(null)
   const pathname = usePathname()
+  const isTouchDevice = useIsTouchDevice()
 
   useEffect(() => {
     if (pathname !== '/' && pathname !== '/about') {
@@ -86,6 +88,8 @@ const Cursor = () => {
       document.getElementById('cursor').style.opacity = 0
     }
   }, [pathname])
+
+  if (isTouchDevice) return null
 
   return (
     <>

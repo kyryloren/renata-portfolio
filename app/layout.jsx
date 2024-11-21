@@ -53,6 +53,19 @@ export default async function RootLayout({ children }) {
       },
     },
   })
+  const aboutData = await fetchAPI('/about', {
+    populate: {
+      fields: ['text'],
+      image: {
+        populate: '*',
+      },
+      Col: {
+        populate: '*',
+      },
+    },
+  })
+
+  const aboutDoc = aboutData?.data
 
   return (
     <html lang='en' className='antialiased'>
@@ -76,7 +89,7 @@ export default async function RootLayout({ children }) {
         <StyledComponentsRegistry>
           <Layout>
             <CustomTheme>
-              <Nav />
+              <Nav data={aboutDoc} />
               <Gallery data={projectsData?.data} />
               <Cursor />
               {children}
