@@ -45,7 +45,9 @@ const Cursor = () => {
     const excludedPaths = ['/contact', '/about', '/archive', '/']
 
     if (excludedPaths.includes(pathname)) {
-      document.getElementById('cursor').style.opacity = 0
+      if (document.getElementById('cursor')) {
+        document.getElementById('cursor').style.opacity = 0
+      }
     } else {
       // Set the initial transform to keep the cursor centered
       gsap.set('.flair', { xPercent: -50, yPercent: -50 })
