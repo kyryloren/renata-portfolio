@@ -40,3 +40,14 @@ export const CustomLink = styled(Link)`
     opacity: 0.75;
   }
 `
+export const CustomHref = styled.a`
+  padding: var(--space-2xs) var(--space-xs);
+  border: 1px solid ${({ theme }) => `rgb(${theme.white})`};
+  color: ${({ theme }) => `rgb(${theme.white})`};
+  text-decoration: none;
+  ${Normal}
+
+  &:hover {
+    opacity: 0.75;
+  }
+`

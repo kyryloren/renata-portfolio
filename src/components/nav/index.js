@@ -2,7 +2,7 @@
 
 import { Container } from '@/styles'
 import Logo from '../logo'
-import { CustomLink, HeaderWrapper, InnerNav, LinksWrapper, LogoWrapper } from './styles'
+import { CustomHref, CustomLink, HeaderWrapper, InnerNav, LinksWrapper, LogoWrapper } from './styles'
 import { useRouter, usePathname } from 'next/navigation'
 import gsap from 'gsap'
 import { useLenis } from 'lenis/react'
@@ -84,7 +84,7 @@ const Nav = ({ data }) => {
               >
                 Archive
               </CustomLink>
-              <CustomLink href={'/contact'}>Contact</CustomLink>
+              <CustomHref href={'mailto:renatadg8@gmail.com'}>Let's Work</CustomHref>
             </LinksWrapper>
           </InnerNav>
         </Container>

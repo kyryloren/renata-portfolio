@@ -5,9 +5,11 @@ import { useThree } from '@react-three/fiber'
 import gsap from 'gsap'
 import Plane from './plane'
 import { usePathname, useRouter } from 'next/navigation'
+import { Text } from '@react-three/drei'
 
 const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item }) => {
   const $root = useRef()
+  const $text = useRef()
   const [hover, setHover] = useState(false)
   const [isActive, setIsActive] = useState(false)
   const [isCloseActive, setCloseActive] = useState(false)
@@ -97,6 +99,19 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
       onPointerLeave={() => setHover(false)}
     >
       <Plane width={width} height={height} texture={item.image.url} active={isActive} />
+
+      <Text
+        color='white'
+        anchorX='center'
+        anchorY='center'
+        font='/fonts/Manrope-Regular.woff'
+        fontSize={viewport.width / 100}
+        position={[0, -height / 2 - 0.1, -0.05]}
+        maxWidth={viewport.width / 3}
+        ref={$text}
+      >
+        {item.title}
+      </Text>
 
       {isCloseActive ? (
         <mesh position={[0, 0, 0.01]} onClick={handleClose}>
