@@ -8,7 +8,7 @@ import Cursor from '@/components/cursor'
 import { fetchAPI } from '@/lib/api'
 
 const title = 'Renata Dominguez'
-const description = ``
+const description = `Renata Dominguez is a multidisciplinary creative designer based in New York City. She specializes in branding, graphic design, print design, and art direction.`
 
 export const metadata = {
   title: {
@@ -25,7 +25,7 @@ export const metadata = {
     type: 'website',
     images: {
       url: `${
-        process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://www.outerlabs.studio'
+        process.env.NODE_ENV === 'development' ? 'http://localhost:3000' : 'https://renatadominguez.com'
       }/images/og-image.jpg`,
       width: 1200,
       height: 630,
@@ -85,7 +85,6 @@ export default async function RootLayout({ children }) {
         <link rel='icon' type='image/svg+xml' href='/favicon/favicon.svg' />
       </head>
       <body className={`bg-black text-white ${manrope.className}`}>
-        {/* To avoid FOUT with styled-components wrap Layout with StyledComponentsRegistry https://beta.nextjs.org/docs/styling/css-in-js#styled-components */}
         <StyledComponentsRegistry>
           <Layout>
             <CustomTheme>
