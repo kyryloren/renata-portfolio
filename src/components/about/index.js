@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import {
   AboutPage,
   CloseWrapper,
@@ -29,13 +29,18 @@ const About = ({ data, open, setOpen }) => {
   const container = useRef(null)
   const invisRef = useRef(null)
 
-  // useEffect(() => {}, [])
-
-  useGSAP(() => {
-    if (open) {
-      if (lenis) {
+  useEffect(() => {
+    if (lenis) {
+      if (open) {
         lenis.stop()
+      } else {
+        lenis.start()
       }
+    }
+  }, [lenis, open])
+
+  useEffect(() => {
+    if (open) {
       const tl = gsap.timeline()
 
       tl.set(container.current, { autoAlpha: 1 })
@@ -54,9 +59,6 @@ const About = ({ data, open, setOpen }) => {
           0.4,
         )
     } else {
-      if (lenis) {
-        lenis.start()
-      }
       const tl = gsap.timeline()
 
       tl.to('.close-button', { scale: 0, ease: 'back.in', duration: 0.3 }, 0)
@@ -75,7 +77,7 @@ const About = ({ data, open, setOpen }) => {
         .to(invisRef.current, { opacity: 0, ease: 'power3.inOut', duration: 0.5 }, 0.4)
         .set(container.current, { autoAlpha: 0 })
     }
-  }, [open, lenis])
+  }, [open])
 
   return (
     <AboutPage ref={container} id='modal' data-lenis-prevent>
