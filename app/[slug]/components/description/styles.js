@@ -7,7 +7,7 @@ export const DescriptionSection = styled(SectionWrapper)`
   display: flex;
   justify-content: space-between;
   width: 100vw;
-  padding: var(--space-4xl);
+  padding: var(--space-3xl) var(--space-4xl);
   z-index: ${Z_INDEX.hero};
 `
 export const QuickContentWrapper = styled.div`

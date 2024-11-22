@@ -1,19 +1,32 @@
 import { Container, NormalText } from '@/styles'
-import { ArticleInner, ArticleWrapper, HalfHalf, HalfTextWrapper, ImageWrapper } from './styles'
+import { ArticleInner, ArticleWrapper, CustomVideo, HalfHalf, HalfTextWrapper, ImageWrapper } from './styles'
 import Image from 'next/image'
 
 const MediaContent = ({ data }) => {
+  console.log(data)
   return (
     <ArticleWrapper>
       <Container>
         <ArticleInner>
           {data?.map((item, index) => {
             if (item.__component === 'project.full-media') {
-              return (
-                <ImageWrapper key={index}>
-                  <Image src={item?.media?.url} alt={item?.media?.alternativeText} fill />
-                </ImageWrapper>
-              )
+              if (
+                item?.media?.mime === 'video/mp4' ||
+                item?.media?.mime === 'video/mpeg' ||
+                item?.media?.mime === 'video/webm'
+              ) {
+                return (
+                  <CustomVideo playsInline autoPlay muted loop width={item?.media?.width} height={item?.media?.height}>
+                    <source src={item?.media?.url} />
+                  </CustomVideo>
+                )
+              } else {
+                return (
+                  <ImageWrapper key={index}>
+                    <Image src={item?.media?.url} alt={item?.media?.alternativeText} fill />
+                  </ImageWrapper>
+                )
+              }
             }
 
             if (item.__component === 'project.half-text-left') {

@@ -1,5 +1,6 @@
 'use client'
 
+import { media } from '@/styles'
 import styled from 'styled-components'
 
 export const ArticleWrapper = styled.article`
@@ -8,7 +9,7 @@ export const ArticleWrapper = styled.article`
 export const ArticleInner = styled.div`
   display: flex;
   flex-direction: column;
-  gap: var(--space-s);
+  gap: var(--space-l);
 `
 export const HalfHalf = styled.div`
   display: grid;
@@ -28,4 +29,13 @@ export const ImageWrapper = styled.div`
     height: 100%;
     object-fit: cover;
   }
+`
+export const CustomVideo = styled.video`
+  width: 100%;
+  height: 100%;
+
+  ${media.phoneL`
+    height: unset;
+    width: 100%;
+  `}
 `
