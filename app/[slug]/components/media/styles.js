@@ -21,7 +21,7 @@ export const HalfTextWrapper = styled.div`
 export const ImageWrapper = styled.div`
   position: relative;
   width: 100%;
-  height: 70vw;
+  height: 90svh;
 
   img {
     width: 100%;

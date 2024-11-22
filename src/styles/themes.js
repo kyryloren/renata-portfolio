@@ -4,6 +4,7 @@ const normalTheme = {
   gray: '107, 107, 107',
   darkGray: '17, 17, 17',
   black: '0, 0, 0',
+  orange: '255, 56, 12',
 }
 
 export default normalTheme
