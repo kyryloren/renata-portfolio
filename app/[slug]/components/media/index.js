@@ -3,7 +3,6 @@ import { ArticleInner, ArticleWrapper, CustomVideo, HalfHalf, HalfTextWrapper, I
 import Image from 'next/image'
 
 const MediaContent = ({ data }) => {
-  console.log(data)
   return (
     <ArticleWrapper>
       <Container>
