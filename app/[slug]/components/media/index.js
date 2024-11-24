@@ -15,7 +15,15 @@ const MediaContent = ({ data }) => {
                 item?.media?.mime === 'video/webm'
               ) {
                 return (
-                  <CustomVideo playsInline autoPlay muted loop width={item?.media?.width} height={item?.media?.height}>
+                  <CustomVideo
+                    key={index}
+                    playsInline
+                    autoPlay
+                    muted
+                    loop
+                    width={item?.media?.width}
+                    height={item?.media?.height}
+                  >
                     <source src={item?.media?.url} />
                   </CustomVideo>
                 )

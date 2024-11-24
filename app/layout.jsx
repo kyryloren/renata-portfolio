@@ -86,14 +86,14 @@ export default async function RootLayout({ children }) {
       </head>
       <body className={`bg-black text-white ${manrope.className}`}>
         <StyledComponentsRegistry>
-          <Layout>
-            <CustomTheme>
+          <CustomTheme>
+            <Layout>
               <Nav data={aboutDoc} />
               <Gallery data={projectsData?.data} />
               <Cursor />
               {children}
-            </CustomTheme>
-          </Layout>
+            </Layout>
+          </CustomTheme>
         </StyledComponentsRegistry>
       </body>
     </html>
