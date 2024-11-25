@@ -12,15 +12,6 @@ import Bottom from './bottom'
 import { usePathname } from 'next/navigation'
 
 /*------------------------------
-Plane Settings
-------------------------------*/
-const planeSettings = {
-  width: 5,
-  height: 3,
-  gap: 0.5,
-}
-
-/*------------------------------
 Gsap Defaults
 ------------------------------*/
 gsap.defaults({
@@ -45,6 +36,7 @@ const Carousel = ({ data }) => {
   --------------------*/
   const progress = useRef(0)
   const startX = useRef(0)
+  const startY = useRef(0)
   const isDown = useRef(false)
   const speedWheel = 0.1
   const speedDrag = -0.3
@@ -54,14 +46,30 @@ const Carousel = ({ data }) => {
     if ($root) return $root.children
   }, [$root])
 
+  // Adjust plane width and height based on viewport size
+  const planeSettings = useMemo(() => {
+    const baseWidth = 5
+    const baseHeight = 3
+    const scaleFactor = viewport.width <= 7.67 ? viewport.width / 5.5 : viewport.width / 12
+    return {
+      width: baseWidth * scaleFactor,
+      height: baseHeight * scaleFactor,
+      gap: 0.5 * scaleFactor,
+    }
+  }, [viewport.width])
+
   /*--------------------
   Diaplay Items
   --------------------*/
   const displayItems = (item, index, active) => {
     const piramidalIndex = getPiramidalIndex($items, active)[index]
+    const isMobile = viewport.width * 100 <= 767
+
     gsap.to(item.position, {
-      x: (index - active) * (planeSettings.width + planeSettings.gap),
-      y: $items.length * -0.1 + piramidalIndex * 0.1,
+      x: isMobile ? 0 : (index - active) * (planeSettings.width + planeSettings.gap),
+      y: isMobile
+        ? -(index - active) * (planeSettings.height + planeSettings.gap)
+        : $items.length * -0.1 + piramidalIndex * 0.1,
     })
   }
 
@@ -99,6 +107,7 @@ const Carousel = ({ data }) => {
     if (activePlane !== null) return
     isDown.current = true
     startX.current = e.clientX || (e.touches && e.touches[0].clientX) || 0
+    startY.current = e.clientY || (e.touches && e.touches[0].clientY) || 0
   }
 
   /*--------------------
@@ -114,9 +123,12 @@ const Carousel = ({ data }) => {
   const handleMove = (e) => {
     if (activePlane !== null || !isDown.current) return
     const x = e.clientX || (e.touches && e.touches[0].clientX) || 0
-    const mouseProgress = (x - startX.current) * speedDrag
+    const y = e.clientY || (e.touches && e.touches[0].clientY) || 0
+    const isMobile = viewport.width * 100 <= 767
+    const mouseProgress = isMobile ? (y - startY.current) * speedDrag * 0.5 : (x - startX.current) * speedDrag
     progress.current = progress.current + mouseProgress
     startX.current = x
+    startY.current = y
   }
 
   /*--------------------
