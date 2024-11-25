@@ -44,7 +44,7 @@ const Cursor = () => {
   useEffect(() => {
     const excludedPaths = ['/contact', '/about', '/archive', '/']
 
-    if (excludedPaths.includes(pathname)) {
+    if (excludedPaths.includes(pathname) || isTouchDevice) {
       if (document.getElementById('cursor')) {
         document.getElementById('cursor').style.opacity = 0
       }
@@ -91,7 +91,7 @@ const Cursor = () => {
         window.removeEventListener('mousemove', handleMouseMove)
       }
     }
-  }, [pathname])
+  }, [pathname, isTouchDevice])
 
   if (isTouchDevice) return null
 

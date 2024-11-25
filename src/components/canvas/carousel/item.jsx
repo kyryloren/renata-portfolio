@@ -105,7 +105,7 @@ const CarouselItem = ({ index, width, height, setActivePlane, activePlane, item 
         anchorX='center'
         anchorY='center'
         font='/fonts/Manrope-Regular.woff'
-        fontSize={viewport.width / 100}
+        fontSize={viewport.width * 100 <= 767 ? viewport.width / 30 : viewport.width / 100}
         position={[0, -height / 2 - 0.1, -0.05]}
         maxWidth={viewport.width / 3}
         ref={$text}

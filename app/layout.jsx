@@ -7,6 +7,8 @@ import manrope from '@/styles/fonts'
 import Cursor from '@/components/cursor'
 import { fetchAPI } from '@/lib/api'
 
+import 'lenis/dist/lenis.css'
+
 const title = 'Renata Dominguez'
 const description = `Renata Dominguez is a multidisciplinary creative designer based in New York City. She specializes in branding, graphic design, print design, and art direction.`
 

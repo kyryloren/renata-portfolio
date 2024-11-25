@@ -125,7 +125,7 @@ const Carousel = ({ data }) => {
     const x = e.clientX || (e.touches && e.touches[0].clientX) || 0
     const y = e.clientY || (e.touches && e.touches[0].clientY) || 0
     const isMobile = viewport.width * 100 <= 767
-    const mouseProgress = isMobile ? (y - startY.current) * speedDrag * 0.5 : (x - startX.current) * speedDrag
+    const mouseProgress = isMobile ? (y - startY.current) * -3 : (x - startX.current) * speedDrag
     progress.current = progress.current + mouseProgress
     startX.current = x
     startY.current = y

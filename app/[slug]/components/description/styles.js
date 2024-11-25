@@ -1,6 +1,6 @@
 'use client'
 
-import { SectionWrapper, Z_INDEX } from '@/styles'
+import { CONTAINER_VALUES, media, SectionWrapper, Z_INDEX } from '@/styles'
 import styled from 'styled-components'
 
 export const DescriptionSection = styled(SectionWrapper)`
@@ -9,6 +9,15 @@ export const DescriptionSection = styled(SectionWrapper)`
   width: 100vw;
   padding: var(--space-3xl) var(--space-4xl);
   z-index: ${Z_INDEX.hero};
+
+  ${media.tabletS`padding: var(--space-xl) var(--space-2xl);`}
+  ${media.phoneL`
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding: var(--space-xl);
+    padding-left: ${CONTAINER_VALUES.mobile.left};
+    padding-right: ${CONTAINER_VALUES.mobile.right};
+  `}
 `
 export const QuickContentWrapper = styled.div`
   display: flex;
@@ -29,4 +38,6 @@ export const DescriptionWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: var(--space-m);
+
+  ${media.phoneL`width: 100%;`}
 `

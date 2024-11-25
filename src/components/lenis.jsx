@@ -4,12 +4,8 @@ import { useEffect, useRef } from 'react'
 import { ReactLenis } from 'lenis/react'
 import gsap from 'gsap'
 
-import 'lenis/dist/lenis.css'
-import { usePathname } from 'next/navigation'
-
 function LenisWrapper({ children }) {
   const lenisRef = useRef()
-  const pathname = usePathname()
 
   useEffect(() => {
     function update(time) {
